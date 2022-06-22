@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:id="@+id/ln_actionbar"
+            android:background="@color/teal_700"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/ic_back"
+                android:id="@+id/btnBack"
+                android:scaleType="center"
+                android:tint="@color/white"
+                />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Home"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/carbg"
+            android:layout_below="@id/ln_actionbar">
+
+            <Button
+                android:id="@+id/btnCreatRace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="70dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/custom_btn_race"
+                android:padding="25dp"
+                android:text="Create Race"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@id/btnCreatRace"
+                android:background="@drawable/custom_btn_race"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:padding="25dp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/btnNext"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>
