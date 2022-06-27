@@ -13,6 +13,7 @@
             app:titleTextColor="@color/teal_700"
             app:title="Create Race"
             android:id="@+id/toolBarRace"/>
+
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
@@ -30,22 +31,6 @@
                 android:textColor="@color/teal_700"
                 android:textStyle="bold"
                 android:gravity="center_horizontal"/>
-
-            <EditText
-                android:id="@+id/edtNameRace"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/custom_edittext"
-                android:hint="Name race"
-                android:inputType="text"
-                android:maxLength="30"
-                android:maxLines="1"
-                android:padding="10dp"
-                android:textColor="@color/black" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,82 +54,36 @@
                     android:text="20/06/2022"
                     android:textSize="20dp"/>
             </LinearLayout>
-            <LinearLayout
+            <EditText
+                android:id="@+id/edtIDRace"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/custom_edittext"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="New Car"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/txtTitleCar"
-                    android:textColor="@color/teal_700"/>
-                <EditText
-                    android:id="@+id/edtIDCar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/custom_edittext"
-                    android:hint="ID Car"
-                    android:inputType="text"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:padding="10dp"
-                    android:textColor="@color/black" />
-                <EditText
-                    android:id="@+id/edtNameCar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/custom_edittext"
-                    android:hint="Name Car"
-                    android:inputType="text"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:padding="10dp"
-                    android:textColor="@color/black"/>
-                <EditText
-                    android:id="@+id/edtNamePerson"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/custom_edittext"
-                    android:hint="Name Person"
-                    android:inputType="text"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:padding="10dp"
-                    android:textColor="@color/black"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnAndCar"
-                    android:background="@drawable/custom_button"
-                    android:text="Add Car"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:textAllCaps="false"
-                    android:textSize="18dp"
-                    android:layout_marginBottom="10dp" />
-            </LinearLayout>
+                android:hint="ID Race"
+                android:inputType="text"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:textColor="@color/black" />
+            <EditText
+                android:id="@+id/edtNameRace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="Name Race"
+                android:inputType="text"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:textColor="@color/black" />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

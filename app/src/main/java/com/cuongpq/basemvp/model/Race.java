@@ -1,26 +1,29 @@
 package com.cuongpq.basemvp.model;
-
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Race implements Serializable{
+    private int idRace;
     private String nameRace;
     private String dateRace;
-    private ArrayList<Car> listCar;
 
-    public Race(String nameRace, String dateRace, ArrayList<Car> listCar) {
+
+    public Race(int idRace, String nameRace, String dateRace) {
+        this.idRace = idRace;
         this.nameRace = nameRace;
         this.dateRace = dateRace;
-        this.listCar = listCar;
     }
 
     public Race() {
+
     }
 
+    public int getIdRace() {
+        return idRace;
+    }
 
+    public void setIdRace(int idRace) {
+        this.idRace = idRace;
+    }
 
     public String getNameRace() {
         return nameRace;
@@ -37,13 +40,4 @@ public class Race implements Serializable{
     public void setDateRace(String dateRace) {
         this.dateRace = dateRace;
     }
-
-    public ArrayList<Car> getListCar() {
-        return listCar;
-    }
-
-    public void setListCar(ArrayList<Car> listCar) {
-        this.listCar = listCar;
-    }
-
 }

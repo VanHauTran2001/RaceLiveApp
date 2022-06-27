@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.cuongpq.basemvp.R;
 import com.cuongpq.basemvp.model.Car;
+import com.cuongpq.basemvp.model.Race;
 import com.cuongpq.basemvp.model.User;
 
 import java.util.ArrayList;
@@ -33,7 +35,14 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String ID_CAR = "id_car";
     private static final String Name_Car = "name_car";
     private static final String Name_Person = "name_person";
-    private static final int VERSION = 2;
+
+    //race
+    private static final String TABLE_RACE = "race";
+    private static final String ID_Race = "id_race";
+    private static final String Name_Race = "name_race";
+    private static final String Date_Race = "date_race";
+
+    private static final int VERSION = 3;
     private Context context;
     private final String SQLQuery = "CREATE TABLE " + TABLE_NAME + " (" +
             ID + " integer primary key, " +
@@ -42,9 +51,13 @@ public class DBManager extends SQLiteOpenHelper {
             LAST_NAME + " TEXT, " +
             AVATAR + " TEXT)";
     private final String CREATE_TABLE_CAR = "CREATE TABLE " +  TABLE_CAR + " ("+
-            ID_CAR + "TEXT primary key,"+
+            ID_CAR + " integer primary key,"+
             Name_Car + " TEXT, " +
             Name_Person + "TEXT)";
+    private final String CREATE_TABLE_RACE = "CREATE TABLE " +  TABLE_RACE + " ("+
+            ID_Race + " integer primary key,"+
+            Name_Race + " TEXT, " +
+            Date_Race + "TEXT)";
     public static final DBManager getInstance(Context context){
         DBManager db = new DBManager(context);
         return db;
@@ -81,7 +94,7 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         for (Car car : cars) {
             ContentValues values = new ContentValues();
-            values.put(ID_CAR, car.getId());
+            values.put(ID_CAR, car.getIdCar());
             values.put(Name_Car,car.getNameCar());
             values.put(Name_Person,car.getNamePerson());
             db.insert(TABLE_CAR, null, values);
@@ -96,14 +109,42 @@ public class DBManager extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Car car = new Car();
-                car.setId(cursor.getString(1));
-                car.setNameCar(cursor.getString(2));
-                car.setNamePerson(cursor.getString(3));
+                car.setIdCar(cursor.getInt(0));
+                car.setNameCar(cursor.getString(1));
+                car.setNamePerson(cursor.getString(2));
                 listCars.add(car);
             } while (cursor.moveToNext());
         }
         db.close();
         return listCars;
+    }
+    public void insertListRace(List<Race> races) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        for (Race race : races) {
+            ContentValues values = new ContentValues();
+            values.put(ID_Race, race.getIdRace());
+            values.put(Name_Race,race.getNameRace());
+            values.put(Date_Race,race.getDateRace());
+            db.insert(TABLE_RACE, null, values);
+        }
+        db.close();
+    }
+    public List<Race> getRaces() {
+        List<Race> listRaces = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_RACE;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null,null);
+        if (cursor.moveToFirst()) {
+            do {
+                Race race = new Race();
+                race.setIdRace(cursor.getInt(0));
+                race.setNameRace(cursor.getString(1));
+                race.setDateRace(cursor.getString(2));
+                listRaces.add(race);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+        return listRaces;
     }
 //    public List<User> getUsers() {
 //        List<User> listUsers = new ArrayList<>();
@@ -129,15 +170,12 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME, ID + "=?", new String[]{String.valueOf(id)});
     }
-//    public Cursor showListCar(){
-//        SQLiteDatabase database = this.getReadableDatabase();
-//        String sql = "SELECT * FROM " + TABLE_CAR ;
-//        return database.rawQuery(sql,null,null);
-//    }
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(SQLQuery);
         sqLiteDatabase.execSQL(CREATE_TABLE_CAR);
+        sqLiteDatabase.execSQL(CREATE_TABLE_RACE);
         Log.d(TAG, "onCreate: ");
     }
 

@@ -6,22 +6,106 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/white">
-        <androidx.appcompat.widget.Toolbar
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleTextColor="@color/teal_700"
-            android:id="@+id/toolBarCar"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="21/06/2022"
-            android:textSize="23dp"
-            android:id="@+id/txtDateRace"
-            android:gravity="center_horizontal"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recylerCar"
-            android:layout_margin="5dp"/>
+            android:layout_height="56dp"
+            android:id="@+id/ln_actionbar"
+            android:background="@color/teal_700"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/ic_back"
+                android:id="@+id/btnBackCar"
+                android:scaleType="center"
+                android:tint="@color/white"
+                />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="Add Car"
+                android:textStyle="bold"
+                android:id="@+id/txtCarTitle"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/custom_edittext"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="New Car"
+                            android:textSize="25dp"
+                            android:textStyle="bold"
+                            android:gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/teal_700"/>
+                        <EditText
+                            android:id="@+id/edtIDCar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/custom_edittext"
+                            android:hint="ID Car"
+                            android:inputType="text"
+                            android:maxLength="30"
+                            android:maxLines="1"
+                            android:padding="10dp"
+                            android:textColor="@color/black" />
+                        <EditText
+                            android:id="@+id/edtNameCar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/custom_edittext"
+                            android:hint="Name Car"
+                            android:inputType="text"
+                            android:maxLength="30"
+                            android:maxLines="1"
+                            android:padding="10dp"
+                            android:textColor="@color/black"/>
+                        <EditText
+                            android:id="@+id/edtNamePerson"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/custom_edittext"
+                            android:hint="Name Person"
+                            android:inputType="text"
+                            android:maxLength="30"
+                            android:maxLines="1"
+                            android:padding="10dp"
+                            android:textColor="@color/black"/>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/btnAndCar"
+                            android:background="@drawable/custom_button"
+                            android:text="Add Car"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:textAllCaps="false"
+                            android:textSize="18dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp" />
+                    </LinearLayout>
     </LinearLayout>
 </layout>

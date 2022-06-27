@@ -9,4 +9,5 @@ public interface IRaceView {
     void onSetDate(String date);
     void onInitToolbar();
     Context onContext();
+    void onMoveToRace();
 }

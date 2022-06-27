@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/createRace"
+        android:title="Race"
+        android:icon="@drawable/ic_baseline_directions_car_24"/>
+    <item android:id="@+id/listRace"
+        android:title="List Race"
+        android:icon="@drawable/ic_baseline_list_24"/>
+    <item android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_profile"/>
+</menu>

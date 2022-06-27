@@ -6,7 +6,6 @@ import android.widget.Toast;
 
 import com.cuongpq.basemvp.R;
 import com.cuongpq.basemvp.databinding.FragmentSignupBinding;
-import com.cuongpq.basemvp.view.base.fragment.BaseFragment;
 import com.cuongpq.basemvp.view.base.fragment.BaseFragmentMvp;
 
 public class FragmentSignup extends BaseFragmentMvp<FragmentSignupBinding , SignupPresenter> implements ISignupView {
@@ -34,6 +33,7 @@ public class FragmentSignup extends BaseFragmentMvp<FragmentSignupBinding , Sign
                 String confirmPassword = binding.edtConfirmPassword.getText().toString().trim();
                 String phone = binding.edtPhone.getText().toString().trim();
                 presenter.onLoginSignup(email,user,password,confirmPassword,phone);
+
             }
         });
     }

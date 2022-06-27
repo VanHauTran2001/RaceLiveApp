@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ICarPresenter extends IBasePresenter {
     void onInitPresenter();
-
+    void onAddCar(int idCar,String nameCar,String namePerson,int idRace);
 
 }
