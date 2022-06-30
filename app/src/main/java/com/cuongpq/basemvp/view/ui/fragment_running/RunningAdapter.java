@@ -11,7 +11,7 @@ import com.cuongpq.basemvp.databinding.ItemRunningBinding;
 import com.cuongpq.basemvp.model.Car;
 public class RunningAdapter extends RecyclerView.Adapter<RunningAdapter.RunningViewHolder>{
     private final IRunning iRunning;
-    private boolean showInfo = true;
+    private boolean showInfo = false;
 
     public RunningAdapter(IRunning iRunning) {
         this.iRunning = iRunning;
@@ -63,7 +63,9 @@ public class RunningAdapter extends RecyclerView.Adapter<RunningAdapter.RunningV
             holder.binding.txtRound.setText("Finish");
             holder.binding.txtTimeRunning.setText("Finish");
         }
-        holder.binding.btnRun.setOnClickListener(view -> iRunning.onClickRun(position));
+        holder.binding.btnRun.setOnClickListener(view -> {
+            iRunning.onClickRun(position);
+        });
         holder.binding.txtStart.setText(car.getStart());
         holder.binding.txtSS1.setText(car.getSs1());
         holder.binding.txtSS2.setText(car.getSs2());
@@ -72,19 +74,16 @@ public class RunningAdapter extends RecyclerView.Adapter<RunningAdapter.RunningV
         holder.binding.txtSS5.setText(car.getSs5());
         holder.binding.txtSS6.setText(car.getSs6());
         holder.binding.txtStop.setText(car.getStop());
-        holder.binding.tableInfo.setVisibility(View.GONE);
-        holder.binding.imgDrop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (showInfo==true){
-                    holder.binding.tableInfo.setVisibility(View.VISIBLE);
-                    holder.binding.imgDrop.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24);
-                    showInfo = false;
-                }else {
-                    holder.binding.tableInfo.setVisibility(View.GONE);
-                    holder.binding.imgDrop.setImageResource(R.drawable.ic_baseline_arrow_drop_down_24);
-                    showInfo=true;
-                }
+        holder.binding.imgDrop.setOnClickListener(view -> {
+
+            if (showInfo){
+                holder.binding.tableInfo.setVisibility(View.VISIBLE);
+                holder.binding.imgDrop.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24);
+                showInfo = false;
+            }else {
+                holder.binding.tableInfo.setVisibility(View.GONE);
+                holder.binding.imgDrop.setImageResource(R.drawable.ic_baseline_arrow_drop_down_24);
+                showInfo=true;
             }
         });
     }

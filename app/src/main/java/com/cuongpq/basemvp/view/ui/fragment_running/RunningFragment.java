@@ -23,6 +23,7 @@ public class RunningFragment extends BaseFragmentMvp<FragmentRunningBinding,Runn
         race = (Race) getArguments().getSerializable("race");
         presenter = new RunningPresenter(this);
         presenter.onInitPresenter();
+        initRecylerView();
     }
 
     @Override
@@ -51,12 +52,13 @@ public class RunningFragment extends BaseFragmentMvp<FragmentRunningBinding,Runn
     public void onClickRun(int position) {
         presenter.onClickRun(position,race.getIdRace());
         getDataCar();
-        initRecylerView();
+        //initRecylerView();
     }
     @Override
     public void getDataCar() {
         presenter.onDataCar(race.getIdRace());
-        initRecylerView();
+        binding.recylerRunning.getAdapter().notifyDataSetChanged();
+
     }
 
     @Override
