@@ -14,7 +14,6 @@ public class RaceDetailsPresenter extends BasePresenter implements IRaceDetailsP
     private FirebaseUser firebaseUser;
     private SQLiteHelper sqLiteHelper;
     private String idAccount;
-
     private ArrayList<Car> carArrayList;
 
     public RaceDetailsPresenter(IRaceDetailsView view) {
@@ -42,8 +41,10 @@ public class RaceDetailsPresenter extends BasePresenter implements IRaceDetailsP
         sqLiteHelper = new SQLiteHelper(view.onGetContext(),"Database.sqlite",null,1);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         idAccount = firebaseUser.getUid();
-        Cursor cursor = sqLiteHelper.getData("SELECT * FROM Car1 WHERE IdAccount ='"+idAccount+"' AND IdRace = '"+idRace+"' "+
-        "AND Round = '0' ");
+//        Cursor cursor = sqLiteHelper.getData("SELECT * FROM Car1 WHERE IdAccount ='"+idAccount+"' AND IdRace = '"+idRace+"' "+
+//        "AND Round = '0' ");
+        Cursor cursor = sqLiteHelper.getData("SELECT * FROM Car1 WHERE IdRace = '"+idRace+"' "+
+                "AND Round = '0' ");
         while (cursor.moveToNext()){
             int idCar = cursor.getInt(3);
             String nameCar = cursor.getString(4);

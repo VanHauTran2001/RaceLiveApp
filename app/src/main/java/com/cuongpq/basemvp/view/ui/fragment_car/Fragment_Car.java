@@ -28,23 +28,15 @@ public class Fragment_Car extends BaseFragmentMvp<FragmentCarBinding,CarPresente
 
     @Override
     public void onClickListener() {
-        binding.btnAndCar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String edtIDCar = binding.edtIDCar.getText().toString().trim();
-                int idCar = Integer.parseInt(edtIDCar);
-                String nameCar = binding.edtNameCar.getText().toString().trim();
-                String namePerson = binding.edtNamePerson.getText().toString().trim();
-                presenter.onAddCar(idCar,nameCar,namePerson,idRace);
-                onBackStack();
-            }
+        binding.btnAndCar.setOnClickListener(view -> {
+            String edtIDCar = binding.edtIDCar.getText().toString().trim();
+            int idCar = Integer.parseInt(edtIDCar);
+            String nameCar = binding.edtNameCar.getText().toString().trim();
+            String namePerson = binding.edtNamePerson.getText().toString().trim();
+            presenter.onAddCar(idCar,nameCar,namePerson,idRace);
+            onBackStack();
         });
-        binding.btnBackCar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackStack();
-            }
-        });
+        binding.btnBackCar.setOnClickListener(view -> onBackStack());
     }
 
     @Override

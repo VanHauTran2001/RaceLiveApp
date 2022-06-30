@@ -1,56 +1,37 @@
 package com.cuongpq.basemvp.view.ui.activity.main;
-
-
-
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.provider.MediaStore;
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import com.cuongpq.basemvp.R;
+import com.cuongpq.basemvp.databinding.ActivityMainBinding;
 import com.cuongpq.basemvp.service.sqlite.SQLiteHelper;
 import com.cuongpq.basemvp.view.base.activity.BaseActivity;
-import com.cuongpq.basemvp.databinding.ActivityMainBinding;
 import com.cuongpq.basemvp.view.ui.fragment_home.HomeFragment;
 import com.cuongpq.basemvp.view.ui.fragment_list_race.ListRaceFragment;
 import com.cuongpq.basemvp.view.ui.fragment_profile.ProfileFragment;
-
-import java.io.IOException;
-
-
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
     private SQLiteHelper sqLiteHelper;
     final private ProfileFragment profileFragment = new ProfileFragment();
-    public static final int MY_REQUEST_CODE = 10;
-    final private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult()
-            , new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == RESULT_OK){
-                        Intent intent = result.getData();
-                        if (intent==null){
-                            return;
-                        }
-                        Uri uri = intent.getData();
-                        profileFragment.setUri(uri);
-                        try {
-                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
-                            profileFragment.setBitmapImageView(bitmap);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            });
     @Override
     protected void initView() {
+//        FirebaseAuth Auth = FirebaseAuth.getInstance();
+//        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+//        FirebaseUser firebaseUser = Auth.getCurrentUser();
+//        DocumentReference documentReference = firestore.collection("Users").document(firebaseUser.getUid());
+//        documentReference.get().addOnSuccessListener(documentSnapshot -> {
+//            if (documentSnapshot.getString("isMember")!=null){
+//                Ultils.permision = 1;
+//                startActivity(new Intent(this, MainActivity2.class));
+//            }
+//            if (documentSnapshot.getString("isStatist")!=null){
+//                Ultils.permision = 2;
+//                startActivity(new Intent(this, MainActivity2.class));
+//            }if (firebaseUser.getEmail().equals("admin@gmail.com")){
+//                Ultils.permision = 0;
+//                replaceFragment(new HomeFragment());
+//                onClickMenuItem();
+//            }
+//        });
         replaceFragment(new HomeFragment());
+        onClickMenuItem();
         sqLiteHelper = new SQLiteHelper(this,"Database.sqlite",null,1);
         sqLiteHelper.QueryData("CREATE TABLE IF NOT EXISTS Race(Id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "IdAccount VARCHAR(20)," +
@@ -72,13 +53,19 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 "SS5 VARCHAR(20)," +
                 "SS6 VARCHAR(20)," +
                 "Stop VARCHAR(20))");
-        onClickMenuItem();
+        sqLiteHelper.QueryData("CREATE TABLE IF NOT EXISTS User (Id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "IdAccount VARCHAR(20),"+
+                "Email NVARCHAR(50),"+
+                "Password NVARCHAR(50),"+
+                "Permission VARCHAR(20))");
+
     }
     private void replaceFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content,fragment,Fragment.class.getName())
                 .commit();
     }
+
     private void onClickMenuItem() {
         binding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
@@ -113,20 +100,20 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);
     }
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode ==MY_REQUEST_CODE){
-            if (grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                openGallery();
-            }
-        }
-    }
-    public void openGallery(){
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        activityResultLauncher.launch(Intent.createChooser(intent,"Select Picture"));
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        if (requestCode ==MY_REQUEST_CODE){
+//            if (grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
+//                openGallery();
+//            }
+//        }
+//    }
+//    public void openGallery(){
+//        Intent intent = new Intent(Intent.ACTION_PICK);
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        activityResultLauncher.launch(Intent.createChooser(intent,"Select Picture"));
+//    }
 
 }

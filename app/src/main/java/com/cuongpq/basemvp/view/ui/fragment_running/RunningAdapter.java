@@ -4,18 +4,11 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.cuongpq.basemvp.R;
 import com.cuongpq.basemvp.databinding.ItemRunningBinding;
 import com.cuongpq.basemvp.model.Car;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 public class RunningAdapter extends RecyclerView.Adapter<RunningAdapter.RunningViewHolder>{
     private final IRunning iRunning;
     private boolean showInfo = true;

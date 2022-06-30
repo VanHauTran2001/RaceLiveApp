@@ -5,13 +5,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import com.cuongpq.basemvp.R;
 import com.cuongpq.basemvp.databinding.ActivityLoginBinding;
 import com.cuongpq.basemvp.view.base.activity.BaseActivity;
 import com.cuongpq.basemvp.view.ui.fragment_signin.FragmentSignin;
-import com.cuongpq.basemvp.view.ui.fragment_signup.FragmentSignup;
 import java.util.ArrayList;
 
 public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
@@ -26,7 +23,6 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
         binding.tabLayout.setupWithViewPager(binding.viewPager);
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragment(new FragmentSignin(),"Login");
-        viewPagerAdapter.addFragment(new FragmentSignup(),"Signup");
         binding.viewPager.setAdapter(viewPagerAdapter);
     }
 

@@ -13,7 +13,8 @@ import com.cuongpq.basemvp.model.Car;
 import com.cuongpq.basemvp.model.Race;
 import com.cuongpq.basemvp.view.base.fragment.BaseFragmentMvp;
 import com.cuongpq.basemvp.view.ui.fragment_car.Fragment_Car;
-import com.cuongpq.basemvp.view.ui.fragment_running.RunningFragment;
+import com.cuongpq.basemvp.view.ui.fragment_running_statist.FragmentRunningStatist;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -49,13 +50,21 @@ public class RaceDetailsFragment extends BaseFragmentMvp<FragmentRaceDetailsBind
         });
         binding.imgBack.setOnClickListener(view -> getFragmentManager().popBackStack());
         binding.btnRunning.setOnClickListener(view -> {
-            RunningFragment runningFragment = new RunningFragment();
+//            RunningFragment runningFragment = new RunningFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putSerializable("race",race);
+//            runningFragment.setArguments(bundle);
+//            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+//            fragmentTransaction.replace(R.id.content,runningFragment);
+//            fragmentTransaction.addToBackStack(RunningFragment.TAG);
+//            fragmentTransaction.commit();
+            FragmentRunningStatist fragmentRunningStatist = new FragmentRunningStatist();
             Bundle bundle = new Bundle();
             bundle.putSerializable("race",race);
-            runningFragment.setArguments(bundle);
+            fragmentRunningStatist.setArguments(bundle);
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.content,runningFragment);
-            fragmentTransaction.addToBackStack(RunningFragment.TAG);
+            fragmentTransaction.replace(R.id.content,fragmentRunningStatist);
+            fragmentTransaction.addToBackStack(FragmentRunningStatist.TAG);
             fragmentTransaction.commit();
         });
     }

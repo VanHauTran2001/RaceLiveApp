@@ -13,6 +13,5 @@ public class ProfilePresenter extends BasePresenter implements IProfilePresenter
     public void oninitPresenter() {
         view.onClickListenner();
         view.setUserInformation();
-        view.onUpdateUser();
     }
 }

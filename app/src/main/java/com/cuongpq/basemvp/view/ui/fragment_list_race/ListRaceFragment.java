@@ -2,16 +2,16 @@ package com.cuongpq.basemvp.view.ui.fragment_list_race;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
-
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.cuongpq.basemvp.R;
 import com.cuongpq.basemvp.databinding.FragmentListRaceBinding;
 import com.cuongpq.basemvp.model.Race;
+import com.cuongpq.basemvp.view.base.activity.Ultils;
 import com.cuongpq.basemvp.view.base.fragment.BaseFragmentMvp;
 import com.cuongpq.basemvp.view.ui.fragment_home.HomeFragment;
 import com.cuongpq.basemvp.view.ui.fragment_racedetails.RaceDetailsFragment;
+import com.cuongpq.basemvp.view.ui.fragment_statist_details.FragmentStatistDetails;
 
 public class ListRaceFragment extends BaseFragmentMvp<FragmentListRaceBinding,ListRacePresenter> implements IListRaceView,ListRaceAdapter.IListRace  {
     private ListRaceAdapter listRaceAdapter;
@@ -23,18 +23,14 @@ public class ListRaceFragment extends BaseFragmentMvp<FragmentListRaceBinding,Li
     @Override
     protected void initView() {
         super.initView();
+        disableLoading();
         presenter = new ListRacePresenter(this);
         presenter.initPresenter();
     }
 
     @Override
     public void onClickListenner() {
-        binding.btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getFragmentManager().popBackStack();
-            }
-        });
+        binding.btnBack.setOnClickListener(view -> getFragmentManager().popBackStack());
     }
 
     @Override
@@ -61,13 +57,26 @@ public class ListRaceFragment extends BaseFragmentMvp<FragmentListRaceBinding,Li
 
     @Override
     public void onClickItem(int position) {
-        RaceDetailsFragment raceDetailsFragment = new RaceDetailsFragment();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("race",presenter.getListRace().get(position));
-        raceDetailsFragment.setArguments(bundle);
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content,raceDetailsFragment);
-        fragmentTransaction.addToBackStack(HomeFragment.TAG);
-        fragmentTransaction.commit();
+        if (Ultils.permision==0){
+            RaceDetailsFragment raceDetailsFragment = new RaceDetailsFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("race",presenter.getListRace().get(position));
+            raceDetailsFragment.setArguments(bundle);
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.content,raceDetailsFragment);
+            fragmentTransaction.addToBackStack(HomeFragment.TAG);
+            fragmentTransaction.commit();
+        }
+        if (Ultils.permision==1){
+            FragmentStatistDetails fragmentStatistDetails = new FragmentStatistDetails();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("race",presenter.getListRace().get(position));
+            fragmentStatistDetails.setArguments(bundle);
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.content,fragmentStatistDetails);
+            fragmentTransaction.addToBackStack(FragmentStatistDetails.TAG);
+            fragmentTransaction.commit();
+        }
+
     }
 }

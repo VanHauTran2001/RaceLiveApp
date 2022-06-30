@@ -9,4 +9,5 @@ public interface ISigninView {
     void onSucessfull(String mess);
     void onError(String mess);
     Context onContext();
+
 }

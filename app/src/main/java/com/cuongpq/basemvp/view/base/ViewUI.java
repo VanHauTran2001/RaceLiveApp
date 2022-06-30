@@ -6,7 +6,6 @@ public interface ViewUI {
     void onBackPressed();
     void viewLoading();
     void disableLoading();
-
     int getIdLoading();
     void showMessage(String message);
 }

@@ -3,17 +3,17 @@ package com.cuongpq.basemvp.view.ui.fragment_signup;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.text.TextUtils;
-
-import androidx.annotation.NonNull;
-
 import com.cuongpq.basemvp.view.base.presenter.BasePresenter;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignupPresenter extends BasePresenter implements ISignupPresenter{
     private ISignupView view;
+    private FirebaseFirestore fireStore;
 
     public SignupPresenter(ISignupView view) {
         this.view = view;
@@ -32,19 +32,29 @@ public class SignupPresenter extends BasePresenter implements ISignupPresenter{
             view.onError("Phone number can not be empty !");
         }else {
             FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+            fireStore = FirebaseFirestore.getInstance();
             ProgressDialog progressDialog = new ProgressDialog(view.onContext());;
             progressDialog.show();
             firebaseAuth.createUserWithEmailAndPassword(email,password)
-                    .addOnCompleteListener((Activity) view.onContext(), new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            progressDialog.dismiss();
-                            if (task.isSuccessful()){
-                                view.onSucessfull("Register user successfully !");
-
-                            }else {
-                                view.onError("Register user failed !");
+                    .addOnCompleteListener((Activity) view.onContext(), task -> {
+                        progressDialog.dismiss();
+                        if (task.isSuccessful()){
+                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                            DocumentReference documentReference = fireStore.collection("Users").document(firebaseUser.getUid());
+                            Map<String,Object> userInfo =  new HashMap<>();
+                            userInfo.put("Email",email);
+                            userInfo.put("UserName",user);
+                            userInfo.put("Phone",phone);
+                            if (view.onCheckMember()){
+                                userInfo.put("isMember","1");
                             }
+                            if (view.onCheckStatist()){
+                                userInfo.put("isStatist","2");
+                            }
+                            documentReference.set(userInfo);
+                            view.addSuccessfull();
+                        }else {
+                            view.onError("Register user failed !");
                         }
                     });
         }

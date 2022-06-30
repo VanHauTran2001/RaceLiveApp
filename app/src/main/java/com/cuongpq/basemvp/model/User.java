@@ -1,27 +1,14 @@
 package com.cuongpq.basemvp.model;
-
-import com.google.gson.annotations.SerializedName;
-
 public class User {
-
-    private int id;
-
     private String email;
+    private String passWord;
 
-    @SerializedName("first_name")
-    private String firstName;
-
-    @SerializedName("last_name")
-    private String lastName;
-
-    private String avatar;
-
-    public int getId() {
-        return id;
+    public User(String email, String passWord) {
+        this.email = email;
+        this.passWord = passWord;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public User() {
     }
 
     public String getEmail() {
@@ -32,27 +19,12 @@ public class User {
         this.email = email;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
 }

@@ -6,6 +6,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/white"
                     android:orientation="vertical">
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -32,13 +33,30 @@
                                     android:layout_gravity="center"
                                     android:textColor="@color/white"/>
                         </LinearLayout>
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:src="@drawable/avatar"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="20dp"
-                            android:id="@+id/imgAvata"/>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/imgAvata"
+                                    android:layout_width="120dp"
+                                    android:layout_height="120dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginTop="20dp"
+                                    android:src="@drawable/avatar" />
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_alignTop="@+id/imgAvata"
+                                    android:layout_alignEnd="@+id/imgAvata"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginTop="70dp"
+                                    android:layout_marginEnd="-42dp"
+                                    android:layout_toEndOf="@+id/imgAvata"
+                                    android:src="@drawable/save"
+                                    android:id="@+id/imgSave"/>
+                        </RelativeLayout>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

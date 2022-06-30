@@ -27,14 +27,11 @@ public class RaceFragment extends BaseFragmentMvp<FragmentRaceBinding,RacePresen
 
     @Override
     public void onClickListener() {
-        binding.btnCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String namRace = binding.edtNameRace.getText().toString().trim();
-                String txtIdRace = binding.edtIDRace.getText().toString().trim();
-                int idRace = Integer.parseInt(txtIdRace);
-                presenter.onCreateRace(idRace,namRace);
-            }
+        binding.btnCreate.setOnClickListener(view -> {
+            String namRace = binding.edtNameRace.getText().toString().trim();
+            String txtIdRace = binding.edtIDRace.getText().toString().trim();
+            int idRace = Integer.parseInt(txtIdRace);
+            presenter.onCreateRace(idRace,namRace);
         });
     }
 
@@ -58,12 +55,7 @@ public class RaceFragment extends BaseFragmentMvp<FragmentRaceBinding,RacePresen
         ((AppCompatActivity) getActivity()).setSupportActionBar(binding.toolBarRace);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         binding.toolBarRace.setTitle("Create Race");
-        binding.toolBarRace.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getFragmentManager().popBackStack();
-            }
-        });
+        binding.toolBarRace.setNavigationOnClickListener(view -> getFragmentManager().popBackStack());
     }
 
     @Override

@@ -25,8 +25,10 @@
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/drawable/ic_profile.xml" value="0.139" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/activity_main2.xml" value="0.22826086956521738" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/fragment_car.xml" value="0.16" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/fragment_home.xml" value="0.22826086956521738" />
+        <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/fragment_home_member.xml" value="0.22826086956521738" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/fragment_list_race.xml" value="0.22826086956521738" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/fragment_profile.xml" value="0.22826086956521738" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/fragment_race.xml" value="0.22826086956521738" />
@@ -34,14 +36,19 @@
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/fragment_running.xml" value="0.22826086956521738" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/fragment_sigin.xml" value="0.22826086956521738" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/fragment_signup.xml" value="0.22826086956521738" />
+        <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/fragment_statist.xml" value="0.22826086956521738" />
+        <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/fragment_statist_details.xml" value="0.22826086956521738" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/fragment_user.xml" value="0.12360688956433637" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/item_car.xml" value="0.22826086956521738" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/item_list_race.xml" value="0.176" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/item_profile.xml" value="0.22826086956521738" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/item_race_details.xml" value="0.22826086956521738" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/item_running.xml" value="0.2" />
+        <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/item_statist_details.xml" value="0.22826086956521738" />
+        <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/item_statist_running.xml" value="0.22826086956521738" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/layout/item_user.xml" value="0.22826086956521738" />
         <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/menu/item_menu_bottomnavigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/raceliveapphautv-main/BaseMVP/app/src/main/res/menu/item_menu_bottomnavigation_user.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

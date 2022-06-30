@@ -1,17 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-1dp">
-        <RelativeLayout
+        android:background="@color/white"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/ln_actionbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="56dp"
+            android:background="@color/teal_700"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnBackSignup"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_back"
+                android:tint="@color/white" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="Signup"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ln_actionbar"
+            android:background="@color/white"
+            android:layout_marginTop="100dp"
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/edtEmail"
@@ -31,22 +56,6 @@
                 android:padding="10dp"
                 android:textColor="@color/black" />
             <EditText
-                android:id="@+id/edtPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:inputType="textPassword"
-                android:maxLength="15"
-                android:maxLines="1"
-                android:drawableLeft="@drawable/ic_baseline_lock_24"
-                android:drawablePadding="15dp"
-                android:textColor="@color/black"
-                android:background="@drawable/custom_edittext"
-                android:hint="Password"
-                android:layout_below="@id/edtUser"
-                android:padding="10dp" />
-
-            <EditText
                 android:id="@+id/edtUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -65,21 +74,35 @@
                 android:padding="10dp"
                 android:textColor="@color/black" />
             <EditText
-                android:id="@+id/edtConfirmPassword"
+                android:id="@+id/edtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/edtUser"
                 android:layout_margin="10dp"
+                android:background="@drawable/custom_edittext"
+                android:drawableLeft="@drawable/ic_baseline_lock_24"
+                android:drawablePadding="15dp"
+                android:hint="Password"
                 android:inputType="textPassword"
                 android:maxLength="15"
                 android:maxLines="1"
+                android:padding="10dp"
+                android:textColor="@color/black" />
+            <EditText
+                android:id="@+id/edtConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edtPassword"
+                android:layout_margin="10dp"
+                android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                 android:drawablePadding="15dp"
-                android:textColor="@color/black"
-                android:background="@drawable/custom_edittext"
                 android:hint="Confirm Password"
-                android:layout_below="@id/edtPassword"
-                android:padding="10dp" />
-
+                android:inputType="textPassword"
+                android:maxLength="15"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:textColor="@color/black" />
             <EditText
                 android:id="@+id/edtPhone"
                 android:layout_width="match_parent"
@@ -98,7 +121,32 @@
                 android:maxLines="1"
                 android:padding="10dp"
                 android:textColor="@color/black" />
-        </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Member"
+                    android:layout_weight="1"
+                    android:textColor="@color/teal_700"
+                    android:textSize="20dp"
+                    android:id="@+id/cbMember"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"/>
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Statist"
+                    android:layout_weight="1"
+                    android:textColor="@color/teal_700"
+                    android:textSize="20dp"
+                    android:id="@+id/cbStatist"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"/>
+            </LinearLayout>
+        </LinearLayout>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,9 +154,10 @@
             android:background="@drawable/custom_button"
             android:text="Signup"
             android:textAllCaps="false"
+            android:layout_below="@id/linear"
             android:id="@+id/btnSignup"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="23dp" />
-    </LinearLayout>
+    </RelativeLayout>
 </layout>
